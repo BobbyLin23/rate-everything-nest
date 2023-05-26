@@ -3,15 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { PrismaService } from './prisma.service';
-import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
-  imports: [
-    AuthModule,
-    ConfigModule.forRoot({
-      envFilePath: ['.env.local'],
-    }),
-  ],
+  imports: [AuthModule, UsersModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
